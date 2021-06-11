@@ -27,10 +27,12 @@
         <title>Weather Map</title>
     </head>
     <body>
-        <div class="navbar"></div>
+        <div class="navbar">
+            <h1>Weather Map</h1>
+            <div><p>Current location: <span id="current-place"></span></p></div>
+            <div id="geocoder"></div>
+        </div>
         <div class="container-fluid">
-            <div id="current-weather"></div>
-            <div class="5-day-cards"></div>
             <div id="map" class="mt-5" style="height: 500px; width: 100%">
                 <div id="menu">
                     <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
@@ -45,7 +47,8 @@
                     <label for="outdoors-v11">outdoors</label>
                 </div>
             </div>
-
+            <div id="current-weather"></div>
+            <div class="5-day-cards"></div>
         </div>
 
 

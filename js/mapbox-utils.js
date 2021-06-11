@@ -19,11 +19,42 @@ var map = new mapboxgl.Map({
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].onclick = switchLayer;
     }
-
 })()
 
+let myGeoCoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    marker: false
+})
 
+let marker;
+addGeoEvent(myGeoCoder);
+myGeoCoder.addTo("#geocoder");
 
+function addGeoEvent(geocode) {
+    geocode.onAdd(map);
+    geocode.on("result", function (e){
+        // console.log(e);
+        console.log(e.result.center);
+        createPopup(e.result.place_name, trySetMarker(e.result.center));
+        $("#current-place").text(e.result.place_name);
+    })
+}
+function createPopup(popupDetails, marker) {
+    let popup = new mapboxgl.Popup().setHTML(`<p>${popupDetails}</p>`).addTo(map);
+    marker.setPopup(popup);
+}
+function setMarker(point) {
+    return new mapboxgl.Marker({
+        color: '#F84C4C'
+    })
+}
+function trySetMarker(point) {
+    if (!marker) {
+        marker = setMarker(point);
+    }
+    return marker.setLngLat(point).addTo(map);
+}
 
 
 
