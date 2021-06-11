@@ -6,6 +6,7 @@ var map = new mapboxgl.Map({
     center: [-97.76443791775463, 30.27401521055017],
     zoom: 4
 });
+var currentCoordinates;
 
 (function (){
     let layerList = document.getElementById('menu');
@@ -34,10 +35,11 @@ myGeoCoder.addTo("#geocoder");
 function addGeoEvent(geocode) {
     geocode.onAdd(map);
     geocode.on("result", function (e){
-        // console.log(e);
-        console.log(e.result.center);
+        console.log(e);
         createPopup(e.result.place_name, trySetMarker(e.result.center));
         $("#current-place").text(e.result.place_name);
+        currentCoordinates = e.result.geometry.coordinates;
+        console.log(`The current coordinates for the weather search is ${currentCoordinates}`);
     })
 }
 function createPopup(popupDetails, marker) {
@@ -55,6 +57,29 @@ function trySetMarker(point) {
     }
     return marker.setLngLat(point).addTo(map);
 }
+function reverseGeocode(coordinates, token) {
+    let baseUrl = 'https://api.mapbox.com';
+    let endPoint = '/geocoding/v5/mapbox.places/';
+    return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(data) {
+            return data.features[0].place_name;
+        });
+}
+
+map.on("click", function (e){
+    console.log(e);
+    reverseGeocode(e.lngLat, mapboxgl.accessToken).then(function(results) {
+        console.log(results);
+        createPopup(results, trySetMarker(e.lngLat));
+        $("#current-place").text(results);
+    });
+    currentCoordinates = e.lngLat;
+    console.log(`The current coordinates for the weather search is ${currentCoordinates}`);
+})
+
 
 
 
