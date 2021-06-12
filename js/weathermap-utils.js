@@ -23,7 +23,7 @@ function getForecast() {
         },
         success: function (data) {
             console.log(data);
-            forecastData = [];
+            let forecastData = [];
             data.list.forEach(function (forecastItem, index, arr) {
                  if (forecastItem.dt_txt.includes("12:00:00")) {
                     forecastData.push({
