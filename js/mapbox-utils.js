@@ -3,7 +3,7 @@ mapboxgl.accessToken = MAPBOX_TOKEN;
 var map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/satellite-v9",
-    center: [-97.76443791775463, 30.27401521055017],
+    center: [-95.43900535013829, 41.493514625750066],
     zoom: 4
 });
 var currentCoordinates;
@@ -40,6 +40,7 @@ function addGeoEvent(geocode) {
         $("#current-place").text(e.result.place_name);
         currentCoordinates = e.result.geometry.coordinates;
         console.log(`The current coordinates for the weather search is ${currentCoordinates}`);
+        getForecast();
     })
 }
 function createPopup(popupDetails, marker) {
@@ -76,8 +77,9 @@ map.on("click", function (e){
         createPopup(results, trySetMarker(e.lngLat));
         $("#current-place").text(results);
     });
-    currentCoordinates = e.lngLat;
+    currentCoordinates = [e.lngLat.lng, e.lngLat.lat];
     console.log(`The current coordinates for the weather search is ${currentCoordinates}`);
+    getForecast();
 })
 
 
