@@ -34,12 +34,12 @@ function getForecast() {
                         temp: Math.round(forecastItem.main.temp),
                         description: forecastItem.weather[0].description,
                         icon: forecastItem.weather[0].icon,
-                        wind: forecastItem.wind.speed
+                        wind: Math.round(forecastItem.wind.speed)
                     });
                  }
             })
             console.log(forecastData);
-
+            domBuilder(forecastData);
         },
         error: function (data) {
             alert("Sorry, there was an issue retrieving weather data for this location.  Please try again later.")
