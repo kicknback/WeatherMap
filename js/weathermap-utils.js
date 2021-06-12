@@ -18,14 +18,27 @@ function getForecast() {
     $.ajax({
         url: `http://api.openweathermap.org/data/2.5/forecast?lat=${currentCoordinates[1]}&lon=${currentCoordinates[0]}&appid=${OPEN_WEATHER_TOKEN}`,
         type: "GET",
-        // data: {
-        //     APPID: OPEN_WEATHER_TOKEN,
-        //     lat: currentCoordinates[1],
-        //     lon: currentCoordinates[0],
-        //     units: "imperial"
-        // },
+        data: {
+            units: "imperial"
+        },
         success: function (data) {
             console.log(data);
+            forecastData = [];
+            data.list.forEach(function (forecastItem, index, arr) {
+                 if (forecastItem.dt_txt.includes("12:00:00")) {
+                    forecastData.push({
+                        date: forecastItem.dt_txt,
+                        feelsLikeTemp: Math.round(forecastItem.main.feels_like),
+                        humidity: forecastItem.main.humidity,
+                        pressure: forecastItem.main.pressure,
+                        temp: Math.round(forecastItem.main.temp),
+                        description: forecastItem.weather[0].description,
+                        icon: forecastItem.weather[0].icon,
+                        wind: forecastItem.wind.speed
+                    });
+                 }
+            })
+            console.log(forecastData);
 
         },
         error: function (data) {

@@ -8,6 +8,7 @@ var map = new mapboxgl.Map({
 });
 var currentCoordinates;
 
+// - immediate function for changing map layers
 (function (){
     let layerList = document.getElementById('menu');
     let inputs = layerList.getElementsByTagName('input');
@@ -35,7 +36,7 @@ myGeoCoder.addTo("#geocoder");
 function addGeoEvent(geocode) {
     geocode.onAdd(map);
     geocode.on("result", function (e){
-        console.log(e);
+        // console.log(e);
         createPopup(e.result.place_name, trySetMarker(e.result.center));
         $("#current-place").text(e.result.place_name);
         currentCoordinates = e.result.geometry.coordinates;
@@ -71,9 +72,9 @@ function reverseGeocode(coordinates, token) {
 }
 
 map.on("click", function (e){
-    console.log(e);
+    // console.log(e);
     reverseGeocode(e.lngLat, mapboxgl.accessToken).then(function(results) {
-        console.log(results);
+        // console.log(results);
         createPopup(results, trySetMarker(e.lngLat));
         $("#current-place").text(results);
     });
