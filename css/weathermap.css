@@ -1,14 +1,109 @@
-.navbar {
-    background-image: url("david-ballew-pH6-eomaijQ-unsplash.jpg");
+body {
+    background-image: url("../assets/images/clouds4.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*z-index: -1;*/
 }
 
+.card-body, .card-header {
+    color: red;
+}
 
+.card {
+    background-image: url("../assets/images/clouds5.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: black solid 1px;
+}
 
+.forecast-cards {
+    font-family: 'Comfortaa', cursive;
+}
+
+.navbar {
+    background-image: url("../assets/images/david-ballew-pH6-eomaijQ-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Do Hyeon', sans-serif;
+    color: white;
+}
+.mapboxgl-ctrl {
+    z-index: 5;
+    font-family: 'Do Hyeon', sans-serif;
+}
 
 #menu {
     position: absolute;
-    background: #efefef;
+    background: #cee8f5;
     padding: 5px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Do Hyeon', sans-serif;
     z-index: 3;
 }
+
+h1 {
+    font-family: 'Big Shoulders Stencil Display', cursive;
+}
+
+/* font size media queries */
+@media only screen and (max-width: 800px){
+    #lower-heading {
+        font-size: 30px;
+    }
+    .list-group {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1100px){
+    /*.feel-like, .description {*/
+    /*    visibility: hidden;*/
+    /*}*/
+    .description, .feel-like {
+        display: none;
+    }
+}
+@media only screen and (max-width: 1250px){
+    .forecast-cards {
+        font-size: 14px;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #map {
+        height: 100px;
+    }
+    #menu {
+        display: none;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #map {
+        height: 200px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    #map {
+        height: 300px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #map {
+        height: 400px;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+   #map {
+      height: 600px;
+   }
+}
+
