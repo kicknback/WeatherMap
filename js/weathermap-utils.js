@@ -25,7 +25,7 @@ function getForecast() {
             console.log(data);
             let forecastData = [];
             data.list.forEach(function (forecastItem, index, arr) {
-                 if (forecastItem.dt_txt.includes("12:00:00")) {
+                 if (forecastItem.dt_txt.includes("00:00:00")) {
                     forecastData.push({
                         date: forecastItem.dt_txt,
                         feelsLikeTemp: Math.round(forecastItem.main.feels_like),
@@ -46,7 +46,11 @@ function getForecast() {
         }
     })
 }
+function getIcon() {
+    $.ajax({
 
+    })
+}
 
 
 
