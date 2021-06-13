@@ -14,7 +14,7 @@ function domBuilder(arr) {
         let dateRemade = new Date(newDate);
         let date = days[dateRemade.getDay()]
         cardContainer.append(`
-            <div class="card d-flex justify-content-between" style="width: 17rem;">
+            <div class="card d-flex justify-content-between">
               <div class="card-header d-flex justify-content-center">
                 ${date}
               </div>
