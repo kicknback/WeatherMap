@@ -2,9 +2,9 @@ mapboxgl.accessToken = MAPBOX_TOKEN;
 
 var map = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/mapbox/satellite-v9",
-    center: [-95.43900535013829, 41.493514625750066],
-    zoom: 4
+    style: "mapbox://styles/mapbox/streets-v11",
+    center: [-95.7129, 37.0902],
+    zoom: 3
 });
 var currentCoordinates;
 

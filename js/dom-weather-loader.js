@@ -14,20 +14,21 @@ function domBuilder(arr) {
         // console.log(newDate);
         console.log(date);
         cardContainer.append(`
-            <div class="card d-flex justify-content-between w3-container w3-animate-top" style="width: 18rem;">
+            <div class="card d-flex justify-content-between w3-animate-top" style="width: 18rem;">
               <div class="card-header d-flex justify-content-center">
                 ${date}
               </div>
               <div class="card-body">
                 <div class="d-flex justify-content-center"><img  src="http://openweathermap.org/img/w/${day.icon}.png" alt="Weather icon"></div>
                 <div class="d-flex justify-content-center"><p>${day.temp}°F / ${celsiusConversion(day.temp)}°C</p></div>
-                <div class="d-flex justify-content-center"><p class="feel-like">Will feel like: ${day.feelsLikeTemp}°F / ${day.feelsLikeTemp}°C</p></div>
+             <!--   <div class="d-flex justify-content-center"><p class="feel-like">Will feel like: ${day.feelsLikeTemp}°F / ${day.feelsLikeTemp}°C</p></div> -->
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item description"><span>${day.description.toUpperCase()}</span></li>
                 <li class="list-group-item">Humidity: <span>${day.humidity}</span></li>
                 <li class="list-group-item">Pressure: <span>${day.pressure}</span></li>
                 <li class="list-group-item">Wind(Mph): <span>${day.wind}</span></li>
+                <li class="list-group-item">Feels like: <span>${day.feelsLikeTemp}°F / ${celsiusConversion(day.feelsLikeTemp)}°C</span></li>
               </ul>
             </div>
         `)
