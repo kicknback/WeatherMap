@@ -31,9 +31,9 @@ body {
     font-family: 'Do Hyeon', sans-serif;
 }
 
-.card-body div:last-child {
-    display: none;
-}
+/*.feel-like * {*/
+/*    display: none;*/
+/*}*/
 
 #current {
     padding-left: 16px;
@@ -68,15 +68,17 @@ h1 {
         display: none;
     }
 }
+@media only screen and (max-width: 900px){
+    .forecast-cards {
+        font-size: 12px;
+    }
+}
 @media only screen and (max-width: 1100px){
-    /*.feel-like, .description {*/
-    /*    visibility: hidden;*/
-    /*}*/
     .description {
         display: none;
     }
-    #feel-like {
-        display: block;
+    .feel-like * {
+        display: none;
     }
 }
 @media only screen and (max-width: 1250px){

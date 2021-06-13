@@ -8,20 +8,20 @@ function domBuilder(arr) {
     let cardContainer = $(".forecast-cards");
     cardContainer.empty();
     cardContainer.removeClass("justify-content-center").addClass("justify-content-between");
-    arr.forEach(function (day, index) {
-        let removeTime = day.date.replace(" 00:00:00", "");
-        let newDate = Date.parse(removeTime);
-        let dateRemade = new Date(newDate);
-        let date = days[dateRemade.getDay()]
+    arr.forEach(function (day) {
+        let newDate = new Date((day.date * 1000) + 18000000);
+        let date = days[newDate.getDay()];
+        // console.log(newDate);
+        console.log(date);
         cardContainer.append(`
-            <div class="card d-flex justify-content-between" style="width: 18rem;">
+            <div class="card d-flex justify-content-between w3-container w3-animate-top" style="width: 18rem;">
               <div class="card-header d-flex justify-content-center">
                 ${date}
               </div>
               <div class="card-body">
                 <div class="d-flex justify-content-center"><img  src="http://openweathermap.org/img/w/${day.icon}.png" alt="Weather icon"></div>
                 <div class="d-flex justify-content-center"><p>${day.temp}°F / ${celsiusConversion(day.temp)}°C</p></div>
-                <div class="d-flex justify-content-center feel-like"><p>Will feel like: ${day.feelsLikeTemp}°F / ${day.feelsLikeTemp}°C</p></div>
+                <div class="d-flex justify-content-center"><p class="feel-like">Will feel like: ${day.feelsLikeTemp}°F / ${day.feelsLikeTemp}°C</p></div>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item description"><span>${day.description.toUpperCase()}</span></li>

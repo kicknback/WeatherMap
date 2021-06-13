@@ -27,7 +27,7 @@ function getForecast() {
             data.list.forEach(function (forecastItem, index, arr) {
                  if (forecastItem.dt_txt.includes("00:00:00")) {
                     forecastData.push({
-                        date: forecastItem.dt_txt,
+                        date: forecastItem.dt,
                         feelsLikeTemp: Math.round(forecastItem.main.feels_like),
                         humidity: forecastItem.main.humidity,
                         pressure: forecastItem.main.pressure,
@@ -53,25 +53,3 @@ function getIcon() {
 }
 
 
-
-
-
-
-
-/*
-* Things I need:
-*
-* data.city.name
-* data.list.forEach(forecastItem, index, arr)   look for 12:00:00 in each item
-*   dt_txt (may want epoch time with 'dt')
-*   .main -- feels like
-*   .main -- humidity
-*   .main -- pressure
-*   .main -- temp
-*   .weather[0].description
-*   .weather[0].icon
-*   .wind -- speed
-*
-*
-*
-* */
