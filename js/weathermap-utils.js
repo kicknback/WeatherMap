@@ -31,10 +31,5 @@ function getForecast() {
         }
     })
 }
-function getIcon() {
-    $.ajax({
-
-    })
-}
 
 
