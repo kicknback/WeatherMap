@@ -11,8 +11,6 @@ function domBuilder(arr) {
     arr.forEach(function (day) {
         let newDate = new Date((day.date * 1000) + 18000000);
         let date = days[newDate.getDay()];
-        // console.log(newDate);
-        console.log(date);
         cardContainer.append(`
             <div class="card d-flex justify-content-between w3-animate-top" style="width: 18rem;">
               <div class="card-header d-flex justify-content-center">
