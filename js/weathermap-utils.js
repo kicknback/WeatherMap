@@ -1,7 +1,7 @@
 
 function getForecast() {
     $.ajax({
-        url: `http://api.openweathermap.org/data/2.5/forecast?lat=${currentCoordinates[1]}&lon=${currentCoordinates[0]}&appid=${OPEN_WEATHER_TOKEN}`,
+        url: `https://cors-anywhere.hirshwebsite.website/http://api.openweathermap.org/data/2.5/forecast?lat=${currentCoordinates[1]}&lon=${currentCoordinates[0]}&appid=${OPEN_WEATHER_TOKEN}`,
         type: "GET",
         data: {
             units: "imperial"
