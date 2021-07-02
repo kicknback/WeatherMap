@@ -82,14 +82,27 @@ h1 {
     }
 }
 
-
 /* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 426px){
+    #current p {
+        flex-wrap: wrap; !important;
+    }
+    #geocoder {
+        align-self: center; !important;
+        margin-bottom: 7.5px; !important;
+    }
+}
+
 @media only screen and (max-width: 600px) {
+
     #map {
         height: 200px;
     }
     #menu {
         display: none;
+    }
+    .w3-animate-top {
+        font-size: 10px; !important;
     }
 }
 
